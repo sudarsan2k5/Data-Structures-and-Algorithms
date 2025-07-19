@@ -98,6 +98,8 @@ public class Level_order_linewisw_more_approches {
     System.out.println("Node Post " + node.data);
   }
 
+
+  // Approch 2
   public static void levelOrderLinewise2(Node node){
     // write your code here
     Queue<Node> mq = new ArrayDeque<>();
@@ -124,6 +126,29 @@ public class Level_order_linewisw_more_approches {
     
   }
 
+  public static void levelOrderLinewise3(Node node){
+    // write your code here
+    Queue<Node> mq = new ArrayDeque<>();
+
+    mq.add(node);
+    
+    while(mq.size() > 0){
+       int childrenInCurrentLevel = mq.size();
+
+       for(int i = 0; i < childrenInCurrentLevel; i++){
+        node = mq.remove();
+        System.out.print(node.data + " ");
+
+        for(Node child: node.children){
+        mq.add(child);
+        }
+       }
+       System.out.println();
+    }
+    
+    
+  }
+
   public static void main(String[] args) throws Exception {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     int n = Integer.parseInt(br.readLine());
@@ -134,7 +159,7 @@ public class Level_order_linewisw_more_approches {
     }
 
     Node root = construct(arr);
-    levelOrderLinewise2(root);
+    levelOrderLinewise3(root);
   }
 
 }
